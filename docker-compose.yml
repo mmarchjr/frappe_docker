@@ -1,5 +1,5 @@
 x-customizable-image: &customizable_image
-  image: ${CUSTOM_IMAGE:-frappe/buildsuite}:${CUSTOM_TAG:-v16}
+  image: ${CUSTOM_IMAGE:-frappe/erpnext}:${CUSTOM_TAG:-v16}
   pull_policy: ${PULL_POLICY:-never}
   build:
     context: .
@@ -86,7 +86,7 @@ services:
         else
           echo "Site $${SITE_NAME} already exists, skipping site creation";
         fi;
-        for app in erpnext hrms buildsuite_core; do
+        for app in erpnext hrms epcforge projectit; do
           if bench --site "$${SITE_NAME}" list-apps | grep -qx "$${app}"; then
             echo "App $${app} already installed on $${SITE_NAME}, skipping";
           else

@@ -2,7 +2,7 @@
 title: Dokploy Deployment
 ---
 
-# Dokploy Deployment (Frappe v16 + ERPNext + HRMS + BuildSuite Core)
+# Dokploy Deployment (Frappe v16 + ERPNext + HRMS + EPCForge + ProjectIT)
 
 This guide keeps the upstream `frappe_docker` architecture and uses a Dokploy-ready `docker-compose.yml` that builds the custom layered image directly.
 
@@ -12,7 +12,7 @@ This repository now includes:
 
 - `docker-compose.yml` (Dokploy entry file, includes production services + MariaDB + Redis + create-site + migrator)
 - `.env.dokploy.example` (complete environment template)
-- `apps.json` (custom app list for build secret: `erpnext`, `hrms`, `buildsuite_core`)
+- `apps.json` (custom app list for build secret: `erpnext`, `hrms`, `epcforge`, `projectit`)
 
 ## 2) Prepare environment variables
 
@@ -48,7 +48,7 @@ What happens on first deploy:
 
 1. `configurator` writes bench config.
 2. `create-site` creates the site if missing.
-3. Apps are installed in order: `erpnext` → `hrms` → `buildsuite_core`.
+3. Apps are installed in order: `erpnext` → `hrms` → `epcforge` → `projectit`.
 4. `migrator` runs `bench --site all migrate`.
 5. Regular services run: backend, frontend, workers, scheduler, websocket.
 
@@ -65,4 +65,5 @@ Expected apps:
 - `frappe`
 - `erpnext`
 - `hrms`
-- `buildsuite_core`
+- `epcforge`
+- `projectit`

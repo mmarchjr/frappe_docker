@@ -101,7 +101,7 @@ docker compose --project-name <project-name> -f ~/gitops/docker-compose.yml up -
 
 ## Example 4: Dokploy-Oriented Production Stack with Automated Site Bootstrap
 
-Use this when deploying with a custom image (for example containing ERPNext + HRMS + BuildSuite Core) and managed MariaDB/Redis in one Compose app.
+Use this when deploying with a custom image (for example containing ERPNext + HRMS + EPCForge + ProjectIT) and managed MariaDB/Redis in one Compose app.
 
 **Requirements:**
 
