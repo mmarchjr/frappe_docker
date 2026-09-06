@@ -32,6 +32,13 @@ At minimum, update:
 
 Then put the same key/value pairs into Dokploy app environment variables.
 
+> **Important:** `apps.json` is mounted as a Docker build secret, so changing it
+> does **not** invalidate the Docker build cache on its own. Whenever you add or
+> change apps in `apps.json`, set `CACHE_BUST` to a new value (e.g. the deploy
+> date) before redeploying. This forces a fresh image build that clones the
+> updated app list. Symptoms of forgetting: `create-site` fails with
+> `ModuleNotFoundError: No module named '<app>'`.
+
 ## 3) Configure Dokploy application
 
 1. Create a Docker Compose application in Dokploy from this repository.

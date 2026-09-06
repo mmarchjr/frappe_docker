@@ -1,5 +1,5 @@
 x-customizable-image: &customizable_image
-  image: ${CUSTOM_IMAGE:-frappe/erpnext}:${CUSTOM_TAG:-v16}
+  image: ${CUSTOM_IMAGE:-local/frappe-custom}:${CUSTOM_TAG:-v16}
   pull_policy: ${PULL_POLICY:-never}
   build:
     context: .
