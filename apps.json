@@ -10,5 +10,8 @@
   {
     "url": "https://github.com/BuildSuite-io/buildsuite_core",
     "branch": "release-0.1.0"
+  },
+  {
+    "url": "https://github.com/nesscale-com/employee_self_service"
   }
 ]
