@@ -99,9 +99,33 @@ docker compose --project-name <project-name> -f ~/gitops/docker-compose.yml up -
 
 > **Note:** Ensure your `SITES_RULE` variable is properly formatted. See [environment variables](04-env-variables.md) for the correct format.
 
+## Example 4: Dokploy-Oriented Production Stack with Automated Site Bootstrap
+
+Use this when deploying with a custom image (for example containing ERPNext + HRMS + BuildSuite Core) and managed MariaDB/Redis in one Compose app.
+
+**Requirements:**
+
+- Build and publish your custom image first (see [Build Setup](02-build-setup.md))
+- Set `CUSTOM_IMAGE`, `CUSTOM_TAG`, `SITE_NAME`, `DB_PASSWORD`, and `ADMIN_PASSWORD`
+
+```sh
+# Generate YAML
+docker compose -f compose.yaml \
+  -f overrides/compose.mariadb.yaml \
+  -f overrides/compose.redis.yaml \
+  -f overrides/compose.create-site.yaml \
+  -f overrides/compose.migrator.yaml \
+  config > ~/gitops/docker-compose.yml
+
+# Start containers
+docker compose --project-name <project-name> -f ~/gitops/docker-compose.yml up -d
+```
+
+This keeps the upstream production services (`backend`, `frontend`, workers, `scheduler`, `websocket`) and adds one-shot initialization plus startup migrations.
+
 ## Create First Site
 
-After starting containers, create your first site. Refer to [site operations](../04-operations/01-site-operations.md#setup-new-site) for detailed instructions.
+If using `compose.create-site.yaml`, the site is created automatically when missing and required apps are installed. Otherwise, create it manually as described in [site operations](../04-operations/01-site-operations.md#setup-new-site).
 
 ## Updating Images
 
