@@ -158,3 +158,13 @@ Use these variables when running behind a reverse proxy or load balancer:
 | Variable        | Purpose                         | Default                    | Allowed Values   |
 | --------------- | ------------------------------- | -------------------------- | ---------------- |
 | `MIGRATE_SITES` | Switch auto migration on or off | `true` - auto migration on | `true` , `false` |
+
+---
+
+## Site Bootstrap Service (`compose.create-site.yaml`)
+
+| Variable         | Purpose                                            | Default | Allowed Values / Notes                  |
+| ---------------- | -------------------------------------------------- | ------- | --------------------------------------- |
+| `SITE_NAME`      | Site to create or reconcile                        | —       | Required                                |
+| `ADMIN_PASSWORD` | Administrator password used for first site creation | —       | Required                                |
+| `DB_ROOT_USER`   | MariaDB root username                              | `root`  | Set only if your root username differs  |
