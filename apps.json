@@ -8,8 +8,8 @@
     "branch": "version-16"
   },
   {
-    "url": "https://github.com/invento-software-limited/epcforge",
-    "branch": "version-16"
+    "url": "https://github.com/BuildSuite-io/buildsuite_core",
+    "branch": "release-0.1.0"
   },
   {
     "url": "https://github.com/Arus-Info/ProjectIT",
