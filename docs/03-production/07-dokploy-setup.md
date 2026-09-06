@@ -32,11 +32,11 @@ At minimum, update:
 
 Then put the same key/value pairs into Dokploy app environment variables.
 
-> **Important:** `apps.json` is mounted as a Docker build secret, so changing it
-> does **not** invalidate the Docker build cache on its own. Whenever you add or
-> change apps in `apps.json`, set `CACHE_BUST` to a new value (e.g. the deploy
-> date) before redeploying. This forces a fresh image build that clones the
-> updated app list. Symptoms of forgetting: `create-site` fails with
+> **Important:** `apps.json` is copied into the build context and mounted as a
+> Docker build secret. The `COPY` busts the Docker cache automatically whenever
+> `apps.json` changes, so app list edits always trigger a fresh image build.
+> Set `CACHE_BUST` to a new value to force a rebuild for any other reason
+> (e.g. stale app code). Symptoms of a stale image: `create-site` fails with
 > `ModuleNotFoundError: No module named '<app>'`.
 
 ## 3) Configure Dokploy application
