@@ -86,7 +86,7 @@ services:
         else
           echo "Site $${SITE_NAME} already exists, skipping site creation";
         fi;
-        for app in erpnext hrms buildsuite_core employee_self_service; do
+        for app in erpnext hrms buildsuite_core; do
           if bench --site "$${SITE_NAME}" list-apps | grep -qx "$${app}"; then
             echo "App $${app} already installed on $${SITE_NAME}, skipping";
           else
